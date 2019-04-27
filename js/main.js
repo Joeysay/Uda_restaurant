@@ -83,9 +83,11 @@ initMap = () => {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
       'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox.streets'
+    id: 'mapbox.streets',
+    tabindex: -1
   }).addTo(newMap);
 
+  // L.setAttribute('tabindex',-1);
   updateRestaurants();
 }
 /* window.initMap = () => {
@@ -165,6 +167,10 @@ createRestaurantHTML = (restaurant) => {
   image.alt = 'restaurant_image'
 
   const name = document.createElement('h1');
+  //add tabindex in h1, when the select a restuarant, focus will be on the name of the restuarant
+  const tab = document.createAttribute('tabindex');
+  tab.value = -1;
+  name.setAttributeNode(tab);
   name.innerHTML = restaurant.name;
   li.append(name);
 

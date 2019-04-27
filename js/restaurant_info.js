@@ -19,7 +19,7 @@ initMap = () => {
       self.newMap = L.map('map', {
         center: [restaurant.latlng.lat, restaurant.latlng.lng],
         zoom: 16,
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
         mapboxToken: 'pk.eyJ1Ijoiam9leXNheSIsImEiOiJjanV1OGRlZnQwOHFkM3lsbG1pOGQxemI0In0.Nnz1btYMhcAbiCAukH3HsQ',
@@ -33,6 +33,8 @@ initMap = () => {
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
     }
   });
+// Try to focus on head when into detail info
+//  document.querySelector('h1').focus();
 }
 
 /* window.initMap = () => {
@@ -81,6 +83,9 @@ fetchRestaurantFromURL = (callback) => {
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById('restaurant-name');
+  const tab = document.createAttribute('tabindex');
+  tab.value = -1;
+  name.setAttributeNode(tab);
   name.innerHTML = restaurant.name;
 
   const address = document.getElementById('restaurant-address');
