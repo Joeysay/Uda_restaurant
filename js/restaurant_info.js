@@ -121,8 +121,6 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
   }
 }
 
-
-
 /**
  * Create all reviews HTML and add them to the webpage.
  */
@@ -168,8 +166,6 @@ createReviewHTML = (review) => {
 
   return li;
 }
-
-
 
 /**
  * Add restaurant name to the breadcrumb navigation menu
