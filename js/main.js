@@ -166,8 +166,8 @@ createRestaurantHTML = (restaurant) => {
   li.append(image);
   image.alt = 'restaurant_image'
 
-  const name = document.createElement('h1');
-  //add tabindex in h1, when the select a restuarant, focus will be on the name of the restuarant
+  const name = document.createElement('h3');
+  //add tabindex in h3, when the select a restuarant, focus will be on the name of the restuarant
   const tab = document.createAttribute('tabindex');
   tab.value = -1;
   name.setAttributeNode(tab);
@@ -215,3 +215,28 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+
+
+/* Register ServiceWorker
+ */
+
+
+
+ if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./js/sw/sw.js')
+    .then(function (reg) {
+      if(reg.installing){
+        console.log("ServiceWorker installing");
+      } else if(reg.waiting){
+        console.log("ServiceWorker installed");
+      } else if (reg.active) {
+        console.log("ServiceWorker active");
+      }
+      console.log('ServiceWorker registration successful with scope: ', reg.scope);
+    })
+    .catch(function (err) {
+      console.log('ServiceWorker registration failed: ', err)
+    });
+  });
+}

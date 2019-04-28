@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
@@ -28,11 +28,11 @@
       <div id="map"></div>
     </section>
     <section>
-      <div class="filter" id=filter"">
-        <div class="filter-options">
-          <h2>Filter Results</h2>
+      <div class="filter">
+        <div class="filter-options" >
+          <label for="neighborhoods-select">Filter Results</label>
           <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
-            <option value="all">All Neighborhoods</option>
+          <option value="all">All Neighborhoods</option>
           </select>
           <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
             <option value="all">All Cuisines</option>
